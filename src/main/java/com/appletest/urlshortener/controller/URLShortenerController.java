@@ -14,6 +14,10 @@ import com.appletest.urlshortener.model.UrlDto;
 import java.util.Objects;
 import java.util.concurrent.TimeUnit;
 
+/**
+ * @author JagadeeshPrakashP
+ * Main controller to run the requestmapping url
+ */
 @Slf4j
 @RestController
 @RequestMapping(value = "/rest/url")
@@ -25,6 +29,12 @@ public class URLShortenerController {
     @Value("${redis.ttl}")
     private long ttl;
 
+    /**
+     * Create the request URL entry to RedisConfig using RedisTemplate
+     * and also returning the url id as part of response header
+     * @param url
+     * @return
+     */
 	@PostMapping
     public ResponseEntity create(@RequestBody final String url) {
         final UrlValidator urlValidator = new UrlValidator(new String[]{"http", "https"});
@@ -38,6 +48,11 @@ public class URLShortenerController {
         return ResponseEntity.noContent().header("id", urlDto.getId()).build();
     }
 
+    /**
+     * Retrive the shorten URL details from ID from Redis template
+     * @param id
+     * @return
+     */
     @GetMapping(value = "/{id}")
     public ResponseEntity getUrl(@PathVariable final String id) {
         final UrlDto urlDto = redisTemplate.opsForValue().get(id);

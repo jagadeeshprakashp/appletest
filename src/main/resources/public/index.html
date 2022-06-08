@@ -1,13 +1,19 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
+<style>
+.center {
+  text-align: center;
+  border: 3px solid green;
+}
+</style>
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
 <script>
 function sendPost() {
 	console.log("Value entered in the field " , $("#urlField").val());
     $.ajax({
         type: "POST",
-        url: "http://localhost:9000/rest/url",
+        url: "/rest/url",
         data: $("#urlField").val(),
         contentType: 'text/plain',
         success: function(data, textStatus, request){
@@ -15,7 +21,7 @@ function sendPost() {
             $("#link1").text("http://localhost:9000/rest/url/"+request.getResponseHeader('id'));
             $.ajax({
                 type: "GET",
-                url: "http://localhost:9000/rest/url/"+request.getResponseHeader('id'),
+                url: "/rest/url/"+request.getResponseHeader('id'),
                 success: function (data) {
                 	  $("a").attr("href",data.url);      
                 }
@@ -32,6 +38,7 @@ function sendPost() {
     <title>URL Shortener</title>
 </head>
 <body>
+<div class="center">
     Please enter the URL : <br>
     
     <input type="url" id="urlField"/>
@@ -39,13 +46,9 @@ function sendPost() {
     <div style="height:100px; width:100px" class="total-title">
 	</div>
 	
-<input type="button" value="Send Post" onclick="sendPost()">	
+<input type="button" value="Post URL" onclick="sendPost()">
 <div><p>The Result value</p> </div>
 <a href="" id="link1"></a>
-<!-- the result of the search will be rendered inside this div -->
-
-
+</div>
 </body>
-
-
 </html>

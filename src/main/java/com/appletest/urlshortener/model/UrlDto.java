@@ -7,6 +7,10 @@ import lombok.Getter;
 import java.nio.charset.StandardCharsets;
 import java.time.LocalDateTime;
 
+/**
+ * @author Jagadeesh Prakash P
+ *
+ */
 @Getter
 @AllArgsConstructor
 public class UrlDto {
