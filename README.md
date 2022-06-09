@@ -14,6 +14,14 @@ Pre requirements
 2. Eclipse / Intellij
 3. Docker
 
+# Approach
+1. I provided input field in index.html for users to enter the full URL.
+2. Up on posting the URL, I used a Hash function to save the URL key with hash code into Redis (In Memory data store)
+3. Redis is loaded as an image in docker hub. Please go through the commands give below
+4. And also on the same time generating to shorten URL and displaying the front end.
+5. Logic to generate to shorten URL is with localhost:9000/<request mapping>/<hashcode>
+6. On clicking the result URL, it will open the full URL in a new tab
+
 # Commands to Install REDIS from docker
 Install the docker into your system depending on the OS. Please run below commands
 ## Step1 - Pulling redis image from docker hub
