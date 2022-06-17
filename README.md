@@ -38,10 +38,24 @@ mvn clean install
 
 To launch the project, Please run URLShortenerController as java application from your IDE
 
-Once after the application is up and running please launch http://localhost:9000/
+Once after the application is up and running. It will automatically launch http://localhost:9000/
 
 Please provide the URL in the input field and click on 'Post URL'
 
 The result URL will be displayed (always will display with the host domain, if it is local then it will be localhost:9000), up on clicking the url it will open in a new tab redirect to the full URL
+
+
+# Running the application
+
+Just double-click the run-urlshortner.sh script. 
+
+Windows: Open powershell at the location of project and run command ./run-urlshortner.sh
+MAC / Linux: Open terminal at the location of the project and run ./run-urlshortner.sh
+
+1. Checks for java and if installed then it will proceed to step 2. If not it will request for installation.
+2. Checks for Maven and if installed then will proceed to step 3. If not it will request for installation.
+3. Checks for docker and if installed then will proceed to step 4. if not will request for installation.
+4. If all the above applications are installed, then it will run the shortener application and launches <protocal>://<domain>:<port>
+5. And the application is ready to use. 
 
 
