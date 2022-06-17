@@ -1,50 +1,22 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-<style>
-.center {
-  text-align: center;
-  border: 3px solid green;
-}
-</style>
-<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
-<script>
-function sendPost() {
-	console.log("Value entered in the field " , $("#urlField").val());
-    $.ajax({
-        type: "POST",
-        url: "/rest/url",
-        data: $("#urlField").val(),
-        contentType: 'text/plain',
-        success: function(data, textStatus, request){
-        	console.log(request.getResponseHeader('id'));
-            $("#link1").text("http://localhost:9000/rest/url/"+request.getResponseHeader('id'));
-            $.ajax({
-                type: "GET",
-                url: "/rest/url/"+request.getResponseHeader('id'),
-                success: function (data) {
-                	  $("a").attr("href",data.url);      
-                }
-            });
-       },
-       error: function (request, textStatus, errorThrown) {
-            alert("Some thing went wrong");
-       }
-    },
-    );
-}
-</script>
+    <link rel="stylesheet" href="../css/urlshorten.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+    <script src="https://code.jquery.com/jquery-3.5.1.min.js"></script>
+    <script src="../js/urlshorten.js"></script>
     <meta charset="UTF-8">
     <title>URL Shortener</title>
 </head>
 <body>
 <div class="center">
-    Please enter the URL : <br>
+    <h3>!!! Welcome to URL shortener application !!!</h3>
+    Please enter a valid URL : <br>
     <input type="url" id="urlField"/>
-
-<input type="button" value="Post URL" onclick="sendPost()"/>
-<div><p>The Result value</p> </div>
-<a href="" id="link1" target="_blank"></a>
+    <input type="button" value="Post URL" onclick="sendPost()"/>
+        <div><p>The Result value</p> </div>
+        <a href="" id="link1" target="_blank"></a>
+    <div class="overlay"></div>
 </div>
 </body>
 </html>
