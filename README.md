@@ -47,14 +47,15 @@ The result URL will be displayed (always will display with the host domain, if i
 
 # Running the application
 
-Just double-click the run-urlshortner.sh script. 
+Just double-click the run-urlshortner.sh script or run the shell script from the project location. 
 
-Windows: Open powershell at the location of project and run command ./run-urlshortner.sh
-MAC / Linux: Open terminal at the location of the project and run ./run-urlshortner.sh
+Windows: Open powershell or git bash at the location of project and run command ./run-urlshortner.sh
+MAC / Linux: Open terminal at the project location and run ./run-urlshortner.sh
 
-1. Checks for java and if installed then it will proceed to step 2. If not it will request for installation.
-2. Checks for Maven and if installed then will proceed to step 3. If not it will request for installation.
-3. Checks for docker and if installed then will proceed to step 4. if not will request for installation.
+Below are the steps that runs when we execute the script
+1. Checks for java and if installed then it will proceed to step 2. If not it will show the error and request for installation and exists.
+2. Checks for Maven and if installed then will proceed to step 3. If not it will show the error and request for installation and exists.
+3. Checks for docker and if installed then will proceed to step 4. If not it will show the error and request for installation and exists.
 4. If all the above applications are installed, then it will run the shortener application and launches <protocal>://<domain>:<port>
 5. And the application is ready to use. 
 
