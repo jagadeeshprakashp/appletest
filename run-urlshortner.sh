@@ -11,23 +11,27 @@ if java -version && java -version 2>&1 >/dev/null | grep -q "java version" ; the
   echo "Java installed :: Checked !!!"
 else
   echo "Java NOT installed!"
-  exit 0
+  $SHELL
 fi
 
 if mvn -v; then
   echo "Maven installed :: Checked !!!"
 else
   echo "Maven NOT installed!"
-  exit 0
+  $SHELL
 fi
 
 if [[ $(which docker) && $(docker --version) ]]; then
     echo "Docker is installed in your system, make sure your docker is uptodate :: Checked !!!"
     # command
+	if ! docker info > /dev/null 2>&1; then
+	  echo "This script uses docker, and it isn't running - please start docker and try again!"
+	  $SHELL
+	fi
   else
     echo "!!! Seems like docker is not installed in the system please download !!! 
 	For mac https://docs.docker.com/desktop/mac/install/ and for Windows https://runnable.com/docker/install-docker-on-windows-10 "
-	exit 0
+	$SHELL
     # command
 fi
 
